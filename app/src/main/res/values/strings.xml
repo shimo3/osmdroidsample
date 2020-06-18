@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">osmdroidsample</string>
+    <string name="btn_label">Follow</string>
 </resources>
