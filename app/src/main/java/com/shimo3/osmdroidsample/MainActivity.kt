@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.osmdroid.config.Configuration
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
+import org.osmdroid.views.overlay.CopyrightOverlay
 import org.osmdroid.views.overlay.Marker
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
@@ -33,6 +34,12 @@ class MainActivity : AppCompatActivity() {
         map.setTileSource(TileSourceFactory.MAPNIK)
         map.setMultiTouchControls(true)
         map.setBuiltInZoomControls(false)
+
+        // copyright
+        val copyright_str = map.tileProvider.tileSource.copyrightNotice
+        val copyrightOverlay = CopyrightOverlay(this)
+        copyrightOverlay.setCopyrightNotice(copyright_str)
+        map.overlays.add(copyrightOverlay)
 
         map.controller.setZoom(18.0)
         val center = GeoPoint(37.3985569,140.3884023)
